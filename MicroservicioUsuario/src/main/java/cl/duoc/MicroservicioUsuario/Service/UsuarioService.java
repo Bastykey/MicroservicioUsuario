@@ -1,12 +1,11 @@
 package cl.duoc.MicroservicioUsuario.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import cl.duoc.MicroservicioUsuario.Model.Usuario;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import cl.duoc.MicroservicioUsuario.Repository.UsuarioRepository;
 import jakarta.transaction.Transactional;
 
@@ -15,22 +14,25 @@ import jakarta.transaction.Transactional;
 public class UsuarioService {
 
     @Autowired
-    private UsuarioRepository Usuariorepository;
+    private UsuarioRepository usuarioRepository;
 
-    public List<Usuario> BuscarTodo(){
-        return Usuariorepository.findAll();
+    // Obtener todos los usuarios
+    public List<Usuario> BuscarTodo() {
+        return usuarioRepository.findAll();
     }
 
-    public Usuario BuscarUnUsuario(Long rut){
-        return Usuariorepository.findById(rut).get();
+    // Buscar un usuario por RUT con manejo seguro de errores
+    public Optional<Usuario> BuscarUnUsuario(String rut) {
+        return usuarioRepository.findById(rut);
     }
 
-    public Usuario Guardar(Usuario usuario){
-        return Usuariorepository.save(usuario);
+    // Guardar un nuevo usuario en la base de datos
+    public Usuario Guardar(Usuario usuario) {
+        return usuarioRepository.save(usuario);
     }
 
-    public void Eliminar(Long rut){
-        Usuariorepository.deleteById(rut);
+    // Eliminar un usuario por RUT
+    public void Eliminar(String rut) {
+        usuarioRepository.deleteAll();
     }
-
 }

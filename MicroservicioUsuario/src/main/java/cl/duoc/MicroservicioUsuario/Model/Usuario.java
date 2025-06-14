@@ -1,29 +1,77 @@
 package cl.duoc.MicroservicioUsuario.Model;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Column;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import java.util.Date;
 
 @Entity
-@Table(name="USUARIO")
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+@Table(name = "USUARIO")
 public class Usuario {
 
     @Id
-    private Long rut;
+    @Column(name = "rut_usuario", nullable = false, unique = true) // Coincide con la BD
+    private String rut;
 
-    @Column(nullable = false)
+    @Column(name = "nombre", nullable = false)
     private String nombre;
 
-    @Column(nullable = false)
-    private String mail;
-    
-    @Column(nullable = false)
-    private Integer idcurso;
+    @Column(name = "email", nullable = false, unique = true)
+    private String email;
+
+    @Column(name = "edad", nullable = false)
+    private int edad;
+
+    @Column(name = "fecha_creacion", nullable = false, updatable = false)
+    private Date fechaCreacion;
+
+    // Constructor vacío
+    public Usuario() {}
+
+    // Getters y setters
+    public String getRut() {
+        return rut;
+    }
+
+    public void setRut(String rut) {
+        this.rut = rut;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    public Date getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public Object map(Object object) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'map'");
+    }
 }
