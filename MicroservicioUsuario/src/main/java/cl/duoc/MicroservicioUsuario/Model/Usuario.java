@@ -28,8 +28,7 @@ public class Usuario {
 
     // Constructor vacío
     public Usuario() {}
-
-    // Getters y setters
+    
     public String getRut() {
         return rut;
     }
