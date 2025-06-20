@@ -4,8 +4,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Column;
 import jakarta.persistence.Table;
-import java.util.Date;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
 
+import java.util.Date;
 
 @Entity
 @Table(name = "USUARIO")
@@ -18,12 +20,14 @@ public class Usuario {
     @Column(name = "nombre", nullable = false)
     private String nombre;
 
-    @Column(name = "email", nullable = false, unique = true)
+    @NotNull
+    @Email
+    @Column(nullable = false, unique = true)
     private String email;
 
     @Column(name = "edad", nullable = false)
     private int edad;
-
+    
     @Column(name = "fecha_creacion", nullable = false, updatable = false)
     private Date fechaCreacion;
 
