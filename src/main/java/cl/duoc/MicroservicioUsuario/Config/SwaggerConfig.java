@@ -24,7 +24,7 @@ public class SwaggerConfig {
                 .url("https://www.duoc.cl"))
                 .license(new License()
                 .name("Todos los derechos reservados")
-                .url("http://localhost:8080/SwaggerUi.html")));
+                .url("ttp://localhost:8082/swagger-ui/index.html")));
     } 
     
 }
